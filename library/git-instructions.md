@@ -11,7 +11,7 @@
 
 1. On the GitHub website, log in and create a **private** remote repository called *aics-project*. Make sure that the box Initialize this repository with a README is **unticked**. Ignore Quick setup instructions on the following page.
 
-1. Add me (*sdobnik*), Mehdi (*mmehdig*) and Wafia (*ASIREM16*) as a collaborator for this repository (check out settings on the repo website).
+1. Add me (*sdobnik*), Mehdi (*mmehdig*) as a collaborator for this repository (check out settings on the repo website).
 
 1. Back in the terminal, set the origin of the repository that you cloned from me to be your remote repository that you just made. Change USERNAME below to your username. This tells git which remote repository to push your changes to when you `git push`. Enter the following command `git remote set-url origin https://github.com/USERNAME/aics-project.git`.
 
@@ -23,11 +23,11 @@
 
 ## Submitting your work
 
-1. Let us know though GUL submission when you would like to submit your project, inclusing a commit id, e.g. `c310619433ab7210fd1106d6061a3abb6aecdac2` which you get by typing `git log`.
+1. Let us know through Canvas submission when you would like to submit your project, inclusing a commit id, e.g. `c310619433ab7210fd1106d6061a3abb6aecdac2` which you get by typing `git log`.
 
-1. We will provide comments either through GUL or in the `README.md` here. Try to keep all information in these two places (rather than random email messages) as this will be helpful to keep track of ideas when it comes times to wrote the report.
+1. We will provide comments either through Canvas or in the `README.md` in the Github folder, whereas the latter is preferred. Try to keep all information in these two places (rather than random email messages) as this will be helpful to keep track of ideas when it comes times to wrote the report. Use `README.md` for keeping a working plan or table of contents for your project. You are encoraged to take notes of your results as you run the experiments that we can discuss with you. For this please create a `notes` folder where you can save your notes as individual [Markdown files](https://guides.github.com/features/mastering-markdown/) (just like this one).
 
-1. Note that GitHub cannot host files more than 100 MB. If you try to push a file larger than this, GitHub will complain.
+1. Note that GitHub cannot host individual files that are larger than 100 MB and repositories larger than 1GB. If you try to push a file larger than this, GitHub will complain. You can upload such files (which will be corpora and supplementary data) to our Box folder. Contact me for details.
 
 
-Th guide has been adapted from https://github.com/rlbarter/stat215a
+The guide has been adapted from https://github.com/rlbarter/stat215a
