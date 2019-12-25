@@ -21,6 +21,13 @@ A model that's pre-trained on image features
 
 ### Evaluation
 
+## References
+
+Movie Genre Classification based on Poster Images with Deep Neural Networks [1](https://www.researchgate.net/publication/320575653_Movie_Genre_Classification_based_on_Poster_Images_with_Deep_Neural_Networks)
+Movie Posters Classification into Genres Based on Low-level Features [2](https://www.researchgate.net/publication/271472129_Movie_posters_classification_into_genres_based_on_low-level_features)
+Automatic Movie Posters Classification into Genres
+Article [3](https://www.researchgate.net/publication/282196711_Automatic_Movie_Posters_Classification_into_Genres)
+
 ## Notes
 
   - 
