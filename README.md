@@ -25,17 +25,17 @@ A model that's pre-trained on image features
 
 ## References
 
-Automatic Movie Posters Classification into Genres 
 [[1]](https://www.researchgate.net/publication/282196711_Automatic_Movie_Posters_Classification_into_Genres)
+Automatic Movie Posters Classification into Genres 
 
-Movie Genre Classification based on Poster Images with Deep Neural Networks 
 [[2]](https://www.researchgate.net/publication/320575653_Movie_Genre_Classification_based_on_Poster_Images_with_Deep_Neural_Networks)
+Movie Genre Classification based on Poster Images with Deep Neural Networks 
 
-Movie Posters Classification into Genres Based on Low-level Features 
 [[3]](https://www.researchgate.net/publication/271472129_Movie_posters_classification_into_genres_based_on_low-level_features)
+Movie Posters Classification into Genres Based on Low-level Features 
 
-Predicting Genre from Movie Posters 
 [[4]](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=2ahUKEwjB-o7299DmAhUDxMQBHRnUC40QFjAAegQIAxAC&url=http%3A%2F%2Fcs229.stanford.edu%2Fproj2019spr%2Freport%2F9.pdf&usg=AOvVaw2QnPi1zU94bTmVLjsxK7df)
+Predicting Genre from Movie Posters 
 
 ## Notes
 
