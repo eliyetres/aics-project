@@ -8,7 +8,7 @@ Here is your wiki where you can document all stages of the project and save inte
 We can consider simple methods to compare informativeness of movie titles:
 
 - First baseline: predict the genre from movie title. <br/>
-  - Method: use a pretraind language model such as BERT to extract distributional features (one of the easy to use implimentations i.e. hugging-face or bert-as-service)
+  - Method: use a pretraind language model such as BERT to extract distributional features (one of the easy to use implimentations i.e. [hugging-face](https://github.com/huggingface/transformers) or [bert-as-service](https://github.com/hanxiao/bert-as-service))
 
 - Second baseline: predict the genre from movie poster. <br/>
   - Method: use a pretrained object recognitionmodel such as Resnet to extract visual features. 
