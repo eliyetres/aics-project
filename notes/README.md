@@ -11,7 +11,7 @@ We can consider simple methods to compare informativeness of movie titles:
   - Method: use a pretraind language model such as BERT to extract distributional features (one of the easy to use implimentations i.e. [hugging-face](https://github.com/huggingface/transformers) or [bert-as-service](https://github.com/hanxiao/bert-as-service))
 
 - Second baseline: predict the genre from movie poster. <br/>
-  - Method: use a pretrained object recognitionmodel such as Resnet to extract visual features. 
+  - Method: use a pretrained object recognition model such as Resnet to extract visual features (I guess in `torchvision`, or [this implimentation](https://pytorch.org/hub/pytorch_vision_resnet/)). 
 
 - Model in question: predict the genre from movie title and its poster.
   - Method 1: Combine two probabilities from two models in baselines (without training) and re-arrange the scores to improve their F1 score.
