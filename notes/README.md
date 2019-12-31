@@ -44,6 +44,6 @@ given a poster picture (and optionally the genre), how can we generate a new mov
 
 Method: train an image caption model but on movie titles. input visual features from resenet, regenerate the title.
 
-Instead of focusing on improving the model, discuss the problems with currect image captioning objective function.
+Instead of focusing on improving the model, discuss the problems with current image captioning objective function over tokens (-log P(y_i)).
 Discuss, ideas about what would be required in the model to have creative movie title generation system?
 
