@@ -126,8 +126,8 @@ You would need a one-layer LSTM with a pre-trained sub-word embedding, + feature
 Then, train the LSTM on movie titles, when you have visual vectors.
 When you train LSTM for generative model you want to have a setup similar to this:
 "the movie title"
-- input: <s> the \space\ mo vie \space\ ti tle 
-- output: the \space\ mo vie \space\ ti tle </s>
+- input: `<s> the \space\ mo vie \space\ ti tle` 
+- output: `the \space\ mo vie \space\ ti tle </s>`
 
 You can even pre-train/warm up the LSTM with a larger movie titles corpus that are not in 6000 poster dataset and put zero vectors for the poster/genre.
 
