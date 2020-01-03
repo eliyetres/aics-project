@@ -96,3 +96,42 @@ I will put discussions here in the notes as well.
 Best,
 Mehdi
 
+---- 
+
+Hi, this has given me a lot to think about.
+ 
+For generating move titles, how would that work? Would I train two models separately?
+Would I train a model on just the movie titles first? Using a character- or word based RNN? If I were to use a pre-trained model for this, what kind would it be?
+ 
+/ Elin
+
+---- 
+
+This is completely optional. If you are interested in this idea here is more comments/suggestions:
+
+In short, pre-trained subword embeddings would be the best choice for a short project. 
+i.e. subword embeddings from here: https://github.com/bheinzerling/bpemb
+
+subwords paper: https://www.aclweb.org/anthology/P16-1162/
+pre-trained models paper: https://www.aclweb.org/anthology/L18-1473/
+
+There are both theoretical reasons for this choice and technical challenges we may avoid with this:
+Theoretically:
+- You need to have a pre-trained model to be able to generalise from movie names using the pre-trained knowledge.
+- Names and titles are usually rare, you probably don’t see it in word models.
+Technically:
+- For language generation you need a decoder model, but most modern pre-trained language models are encoders (BERT, and ELMo are encoders). Using pre-trained model leads to pre-trained embeddings. Other pre-trained generative models such as transformer-decoder might be hard to start with. (this blog post https://mayhewsw.github.io/2019/01/16/can-bert-generate-text/)
+
+You would need a one-layer LSTM with a pre-trained sub-word embedding, + feature fusion layer (concatenate each subword embedding with poster visual vector or its genre vector).
+Then, train the LSTM on movie titles, when you have visual vectors.
+When you train LSTM for generative model you want to have a setup similar to this:
+"the movie title"
+- input: <s> the \space\ mo vie \space\ ti tle 
+- output: the \space\ mo vie \space\ ti tle </s>
+
+You can even pre-train/warm up the LSTM with a larger movie titles corpus that are not in 6000 poster dataset and put zero vectors for the poster/genre.
+
+My prediction is that at the end the model is going to generate quite random and funny movie titles. 
+
+Best,
+Mehdi
