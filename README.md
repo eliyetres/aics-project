@@ -49,7 +49,7 @@ IMDB dataset. The movie posters are obtained from IMDB website. The dataset cont
 [ResNet By Pytorch Team](https://pytorch.org/hub/pytorch_vision_resnet/)
 
 [7]
-[Movie Genre from its Poster: Predicting the Genre of the movie by analysing its poster]((https://www.kaggle.com/neha1703/movie-genre-from-its-poster))
+[Movie Genre from its Poster: Predicting the Genre of the movie by analysing its poster](https://www.kaggle.com/neha1703/movie-genre-from-its-poster)
 
 ## Notes
 
