@@ -4,39 +4,80 @@
 
 ### Project Description
 
-I want to see if there is an improvement in  movie genre classification based  on movie poster images if you add the name of the title. A movie poster is usually the first impressions which gives you an idea about the movie content and its genre. Humans can get an idea based on things like colour, objects, expressions on the faces of actors to quickly determine the genre (horror, comedy, action etc).  Movie posters are created to attract people paying time and money to watch the movie. They  usually include a lot of features. For example, a violent scene with a crashed car and the actor with gun is created to attract people who like excitement or violence. If humans are more or less able to predict genre of a movie only giving a look at its poster, then it's possible to assume that the poster has some characteristics which could be used in machine learning to predict its genre.
+Train an image caption model on movie titles and visual features of the poster images and generate a new image titles.\
+
+One project used a multi-layer Recurrent Neural Network to generate story titles from plot summaries. The dataset used was the WikiPlots corpus which has a collection of 112,936 story plots extracted from English language Wikipedia.[4]  The dataset was created by searching language article that contains a sub-header with words like "plot" or "plot summary" and thus includes summaries from movies, books, tv episodes, video games, etc.  The character-level language model consistently came up with titles that were both varied and plausible, like "Pirates: A Fight Dance Story", "Cannibal Spy II" and "Conan the Pirate" [5]
 
 ### Approach
 
-In order to do that a Deep Neural Network (Convolutional Neural Network) is constructed to classify a given movie poster image into genres. Since a movie may belong to multiple genres, this is a multi-label image classification problem.
+Build an RNN model that uses pre-trained sub-word embedding and feature fusion layer which concatenates each subword embedding with the visual representation of the poster image. Train the RNN model on the movie titles and the visual vectors.
 
+**Pre-trained subword embeddings**
+Subword embeddings represent morphological information by splitting words into smaller instances. The idea of encoding rare and unknown words as sequences of subword units, based on the intuition that various word classes are translatable via smaller units than words (originally used to improve translation models for unknown words). The segmentation made by the Byte-Pair Encoding that is often satisfactory, however, it does not make a linguistic morphological analysis.[2] BPEmb: Tokenization-free Pre-trained Subword Embeddings in 275 Languages is a collection of pre-trained subword embeddings based on Byte-Pair Encoding (BPE) trained on Wikipedia articles. https://nlp.h-its.org/bpemb [1]
 
+**ResNet**
+Thie is the Pytorch version of ResNet residual nets model is pre-trained on the ImageNet classification dataset, as proposed in "Deep Residual Learning for Image Recognition".[3] The versions of the model contains 5, 34, 50, 101, 152 layers respectively.[6]
 
 ### Dataset
 
-*IMDB dataset*\
-["Movie Genre from its Poster - Predicting the Genre of the movie by analysing its poster"](https://www.kaggle.com/neha1703/movie-genre-from-its-poster)
+IMDB dataset. The movie posters are obtained from IMDB website. The dataset contains IMDB Id, IMDB Link, Title, IMDB Score, Genre and link to download movie posters. Each Movie poster can belong to at least one genre and can have at most 3 genre labels assigned to it. https://www.kaggle.com/neha1703/movie-genre-from-its-poster [7]
 
 ### Model
-
-A model that's pre-trained on image features
 
 ### Evaluation
 
 ## References
 
-[[1]](https://www.researchgate.net/publication/282196711_Automatic_Movie_Posters_Classification_into_Genres)
-Automatic Movie Posters Classification into Genres 
+[[1]](https://www.aclweb.org/anthology/L18-1473/)
+BPEmb: Tokenization-free Pre-trained Subword Embeddings in 275 Languages
 
-[[2]](https://www.researchgate.net/publication/320575653_Movie_Genre_Classification_based_on_Poster_Images_with_Deep_Neural_Networks)
-Movie Genre Classification based on Poster Images with Deep Neural Networks 
+[[2]](https://www.aclweb.org/anthology/P16-1162/)
+Neural Machine Translation of Rare Words with Subword Units
 
-[[3]](https://www.researchgate.net/publication/271472129_Movie_posters_classification_into_genres_based_on_low-level_features)
-Movie Posters Classification into Genres Based on Low-level Features 
+[[3]](https://arxiv.org/abs/1512.03385)
+Deep Residual Learning for Image Recognition
 
-[[4]](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=2ahUKEwjB-o7299DmAhUDxMQBHRnUC40QFjAAegQIAxAC&url=http%3A%2F%2Fcs229.stanford.edu%2Fproj2019spr%2Freport%2F9.pdf&usg=AOvVaw2QnPi1zU94bTmVLjsxK7df)
-Predicting Genre from Movie Posters 
+[[4]](https://github.com/markriedl/WikiPlots) 
+WikiPlots corpus
+
+[[5]](https://aiweirdness.com/post/160014619217/story-titles-invented-by-neural-network)
+Story titles, invented by neural network
+
+[[6]](https://pytorch.org/hub/pytorch_vision_resnet/)
+ResNet By Pytorch Team
+
+[[7]](https://www.kaggle.com/neha1703/movie-genre-from-its-poster)
+Movie Genre from its Poster: Predicting the Genre of the movie by analysing its poster
 
 ## Notes
 
-  - 
+[x] Find the dataset
+[x] Pre-processing: remove years in title from csv
+[x] Remove all records without genre, title or link
+[x] Create new csv with image names, genre and title
+[x] Skip downloading images if they already exist in folder
+[x] Read about pre-trained BERT model
+[x] Read about pre-trained ResNet model
+[x] Scrap initial idea and start over.
+[x] Read about sub-word embeddings
+- Subword embeddings attempt to introduce morphological information by splitting words into smaller instances.
+[x] Read paper about BERT sub-word embeddings
+- If/how a word gets split depends on the vocabulary size. A smaller vocabulary size yields a segmentation into more subwords, and a large vocabulary will not split frequent words. I chose the smallest vocabulary since the titles are mostly short instances of text.
+[x] Read paper about machine translation of rare words
+- The idea of encoding rare and unknown words as sequences of subword units, based on the intuition that various word classes are translatable via smaller units than words (to improve translation models).
+[x] Can't import BPEmb on the server
+- Worked after restarting the server...
+[x] How to generate image representation vectors from ResNet
+- Using ResNet18, one instance of image vector (created using PIL module) is fed to the model. The image representation is created by copying the output of the final layer (with an output of 512 dimensions) after feeding the image vector to the model.
+[x] Need to fix error with ResNet model for grayscale images
+- Fixed error by checking image band and changing the mode to RGB for grayscale images using PIL - seems this is not the best way (forgot source)
+[x] Read about feature fusion layers/multimodal pooling.
+[x] Concatenate token and image representations vectors in network model's forward loop or before?
+- Made an implementation that concatenates and adds vectors to a dataset, not sure if it's a good approach
+[ ] GRU or GRUCell? (Pytorch's LSTM too hard)
+[ ] Need to add start and end tags to movie title token list
+
+**Open questions:**
+
+- Which ResNet model is best?
+- Which vector dimension and/or vocabulary size of BPEmb is better? (larger vocab means larger segmentations)
