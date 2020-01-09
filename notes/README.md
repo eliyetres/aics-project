@@ -135,3 +135,156 @@ My prediction is that at the end the model is going to generate quite random and
 
 Best,
 Mehdi
+
+----
+
+Hi, I don't know, I feel more uncertain now than I was before! The idea with generating new titles seem cool but complicated. I have read the suggestions you sent but I still don't understand how I would implement it.
+You said that predicting the genres from movie posters and titles had a too slim role of language in the research question. How is this better? Is the difference that I would try to generate titles instead of predicting genres?
+ 
+/ Elin
+
+
+## Discussion over email (2020-01-07)
+
+I looked at the subword embeddings. It has it’s own tokenization function, but the module is not installed on the server.  I’m not sure if it’s something I  could solve myself. Is it possible to use a GRU model instead of an LSTM? I find the pytorch implementation of LSTMs a bit hard
+ 
+/ Elin
+
+----
+
+Hello,
+
+You must be able to install python packages with pip3 install --U <package name>
+GRU is fine. But please use packages as much as possible and try to avoid implementing these NN layers on your own.
+
+Best,
+
+Mehdi
+
+----
+
+Thanks! I tried this a couple of days ago but I still got errors when I tried to import the module. But it works now... Maybe it needed a restart. ☹
+ 
+/ Elin
+
+----
+
+Hi again! I remember you talked about concatenating text and visual vectors in class. Did you have an example on how to do this?
+/ Elin
+
+----
+
+I have Keras example. In tutorials.
+
+A simple solution is to use Reset to produce a vector for each image in your dataset and save them. Then, use those vectors as representation of image in your design. 
+In your RNN, concatenate each token embedding at input with the image vector.
+
+Best,
+Mehdi
+
+----
+
+I managed to get a 512 dimension tensor with ResNet18 following this example: https://becominghuman.ai/extract-a-feature-vector-for-any-image-with-pytorch-9717561d1d4c
+Is this what you meant? And then concatenate the image with each token for every title?’
+ 
+/ Elin
+
+----
+
+It right. 
+
+Mehdi
+
+----
+
+Is a ‘feature fusion layer’ something that exists?
+ 
+I found this example:
+https://discuss.pytorch.org/t/concatenate-layer-output-with-additional-input-data/20462/2
+where the data is concatenated with the image in the forward loop. Is this what you meant?
+ 
+/ Elin
+
+----
+
+Yes, concatenation is the most straightforward fusion strategy, in my opinion.
+Concatenation as fusion of (1) convoluted representation of visual features and (2) token embedding at the input to RNN language model.
+
+In addition to concatenation, one can add dense layers to control the dimensions as well, so the fusion becomes a trainable module.
+
+Instead of fusion, it could be called multimodal pooling as well.
+
+
+Best,
+Mehdi
+
+----
+
+Thanks. I only found one stackoverflow question for pytorch (without answers) when searching for feature fusion layers 😊 But implementing it like in the example, in the forward loop, would mean one that I would need to feed one tokenized title at a time? Is this a good idea or should I do the concatenation before I feed them into the model?
+ 
+/ Elin
+
+----
+
+There are two solutions for RNNs in pytorch, if I remember correctly:
+
+1. Using nn.GRUCell or nn.LSTMCell. Then write a loop, prepare inputs inside loop, including the concatenations.
+
+2. Using nn.GRU or nn.LSTM. Then you need to expand dimnsion of visual vector for sequence length. Then, repeat the tensor along the new dimension by maximum length the sequence. When you got matching dimensions for batch and sequence length for embeddings and visual features, you can concatenate them along the feature dimension.
+
+The only practical difference between LSTM and GRU in pytorch is the initialisation of memory state in LSTM.
+There are very brief examples of LSTM and GRU here:
+https://pytorch.org/docs/master/nn.html#torch.nn.LSTM
+
+Instead of random inputs in those examples you feed it with pre-trained and predefined vectors from data.
+
+Mehdi
+
+----
+
+Thanks!
+ 
+I need to add start and end tags to the tokenized titles, right? I’m not sure how to do this with pre-trained embeddings. Do I just create random vectors?
+ 
+/ Elin
+
+----
+
+Yes, you can define them manually with zero vectors.
+
+Mehdi
+
+
+## Discussion over email (2020-01-08)
+
+Ok. I have looked at some examples for RNNs but I’m still not sure how to build it.
+For an RNN, should I input one token at a time, or a full title? Should the targets be and index mapping for each token or something else?
+ 
+/ Elin
+
+----
+
+I am in office and I also can call you on Skype. What do you think?
+
+Mehdi
+
+----
+
+I think it would be easier for me if we met in person! Are you in the new building? For how long?
+ 
+/ Elin
+
+
+Yes, I am here room #574. At least next 2 hours
+
+Mehdi
+
+----
+
+Ok! I can be there in like 20-30 min 😊
+ 
+/ Elin
+
+----
+
+
