@@ -255,36 +255,31 @@ Yes, you can define them manually with zero vectors.
 Mehdi
 
 
-## Discussion over email (2020-01-08)
+## Meeting on 2020-01-08
 
-Ok. I have looked at some examples for RNNs but I’m still not sure how to build it.
+Elin's question: I have looked at some examples for RNNs but I’m still not sure how to build it.
 For an RNN, should I input one token at a time, or a full title? Should the targets be and index mapping for each token or something else?
  
-/ Elin
+#### People in the meeting
 
-----
+- Elin
+- Mehdi
 
-I am in office and I also can call you on Skype. What do you think?
+#### What we did
 
-Mehdi
+In the intense 5 hours meeting:
 
-----
+- We read Elin's code including the code for downloading the images, pre-processing the text using BPEmb for titles, and vectorising the image.
+- We looked at the challenges in pytorch implementation, to re-write some parts for simplification (i.e. simplifying the use of vocabulary and tokenization with BPEmb in pytorch)
+- We processed and saved vectorizations of all images with Resnet (for faster processing time we chose the smallest model Resnet18)
+- We tried to impliment the model up to the training steps without defining the loss function.
 
-I think it would be easier for me if we met in person! Are you in the new building? For how long?
- 
-/ Elin
+#### What next?
 
-
-Yes, I am here room #574. At least next 2 hours
-
-Mehdi
-
-----
-
-Ok! I can be there in like 20-30 min 😊
- 
-/ Elin
-
-----
-
+- Elin needs to figure out how to use a loss function and impliment the training loop.
+- Some, ideas for evaluation:
+   1. What is the difference in loss of the same test dataset, when using different embeddings trained on the same training datasets? Does the multi-lingual embedding help?
+   2. Come up with hypothesis about how system works or what shouldn't work.
+   Then test made up movie titles on a few poster images as an examination and development of hypothesis about the MovieTitleModel
+- To report about the project, write up two sections first: (1) method (2) evaluations. 
 
